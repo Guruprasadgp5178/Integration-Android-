@@ -1,0 +1,20 @@
+package com.example.moengageassignment
+
+import android.app.Application
+import com.moengage.core.DataCenter
+import com.moengage.core.LogLevel
+import com.moengage.core.MoEngage
+import com.moengage.core.config.LogConfig
+
+class Myapplication : Application() { // extends here
+    override fun onCreate() {
+        super.onCreate()
+
+        val moEngage = MoEngage.Builder(this, "SO4PCE7SVGA3BL9ATUWEOO5F", DataCenter.DATA_CENTER_1)
+            .configureLogs(LogConfig(LogLevel.VERBOSE, false))
+            .build() // need to provide app id and data center
+        // (from DataCenterclass object)
+
+        MoEngage.initialiseDefaultInstance(moEngage)
+    }
+}
